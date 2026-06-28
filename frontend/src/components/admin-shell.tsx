@@ -44,8 +44,8 @@ export function AdminShell({ title, extra, children }: AdminShellProps) {
 
   return (
     <Layout className="admin-layout">
-      <Sider breakpoint="lg" collapsedWidth="0" width={166} className="admin-sider">
-        <div className="admin-brand">工作台</div>
+      <Sider breakpoint="lg" collapsedWidth="0" width={190} className="admin-sider">
+        <div className="admin-brand">小人鱼妈妈日本代购</div>
         <nav className="admin-nav">
           {navItems.map((item) => {
             const active = item.key === '/' ? pathname === '/' : pathname.startsWith(item.key);

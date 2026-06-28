@@ -1,0 +1,3 @@
+.next
+node_modules
+EOF; __tr_native_ec=$?; pwd -P >| '/var/folders/p5/8mrvx6j56wx51v___ny4q4x40000gn/T/agent-toolhost/jobs/job-11a77330f97e4a2583d9e7eec99d4443/cwd.txt'; exit "$__tr_native_ec"

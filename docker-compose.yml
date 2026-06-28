@@ -1,0 +1,52 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: jp-shopping-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jp_shopping
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', '127.0.0.1', '-proot']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: jp-shopping-backend
+    restart: unless-stopped
+    environment:
+      PORT: 3001
+      DATABASE_URL: mysql://root:root@mysql:3306/jp_shopping
+      PYTHON_BIN: python3
+      PYTHON_COLLECTOR_SCRIPT: /app/collector/collector.py
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - '3001:3001'
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: jp-shopping-frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:3001
+      INTERNAL_API_BASE_URL: http://backend:3001
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
+
+volumes:
+  mysql_data:

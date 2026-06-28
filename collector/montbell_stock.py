@@ -85,13 +85,29 @@ def format_jpy(value):
 
 def get_image_url(product, color_code):
     images = product.get('images', {})
-    if isinstance(images, dict):
-        color_img = images.get(color_code)
-        if isinstance(color_img, dict):
-            file_name = color_img.get('file_name')
+    if not isinstance(images, dict):
+        return None
+
+    def _url_from_color(img_data):
+        if isinstance(img_data, dict):
+            file_name = img_data.get('file_name')
             product_code = product.get('product_code', '')
             if file_name and product_code:
                 return f'https://www.montbell.com/storage/products/images/origin/{file_name}'
+        return None
+
+    # 优先取指定颜色
+    color_img = images.get(color_code)
+    url = _url_from_color(color_img)
+    if url:
+        return url
+
+    # 指定颜色没有，遍历取第一张有图的
+    for img_data in images.values():
+        url = _url_from_color(img_data)
+        if url:
+            return url
+
     return None
 
 

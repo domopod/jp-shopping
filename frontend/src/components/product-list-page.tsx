@@ -385,15 +385,7 @@ export function ProductListPage({ highlightedId = 0 }: ProductListPageProps) {
   }
 
   return (
-    <AdminShell
-      title="商品管理"
-      extra={
-        <button className="admin-refresh-button" onClick={() => void handleRefresh()} disabled={isRefreshing}>
-          <ReloadOutlined className={`admin-refresh-icon ${isRefreshing ? 'admin-refresh-icon-spinning' : ''}`} />
-          刷新
-        </button>
-      }
-    >
+    <AdminShell title="商品管理">
       {contextHolder}
       <div className="admin-products-page">
         <div className="admin-products-toolbar">

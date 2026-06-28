@@ -38,13 +38,14 @@ function ProductStockCard({
 }) {
   const colorGroups = groupSkusByColor(product.skus);
   const colors = Object.keys(colorGroups);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <div className={`stock-product-card ${product.isPinned ? 'is-pinned' : ''}`}>
       <div className="stock-card-main">
         <div className="stock-card-image">
-          {product.imageUrl ? (
-            <img src={product.imageUrl} alt={product.title} />
+          {product.imageUrl && !imgError ? (
+            <img src={product.imageUrl} alt={product.title} onError={() => setImgError(true)} />
           ) : (
             <div className="stock-card-img-placeholder">无图</div>
           )}

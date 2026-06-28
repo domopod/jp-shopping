@@ -22,6 +22,7 @@ body {
 
 body {
   font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-size: 14px;
 }
 
 body.admin-modal-open {
@@ -513,7 +514,7 @@ code {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 52px;
+  min-height: 36px;
   min-width: 104px;
   padding: 0 22px;
   border: 1px solid rgba(76, 108, 189, 0.18);

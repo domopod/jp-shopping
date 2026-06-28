@@ -1,6 +1,6 @@
 'use client';
 
-import { ReloadOutlined, SaveOutlined } from '@ant-design/icons';
+import { SaveOutlined } from '@ant-design/icons';
 import { Button, Card, Input, Space, Tag, Typography, message } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { AdminShell } from '@/components/admin-shell';
@@ -99,20 +99,10 @@ export function ModelPromptPage() {
   }
 
   return (
-    <AdminShell
-      title="模型提示词管理"
-      extra={
-        <Space>
-          <Button className="admin-model-prompt-action-button" onClick={() => void loadPrompts(true)}>
-            <ReloadOutlined />
-            刷新
-          </Button>
-        </Space>
-      }
-    >
+    <AdminShell title="模型提示词管理">
       {contextHolder}
 
-      <Card bordered={false} className="admin-edit-card admin-edit-surface" loading={loading}>
+      <Card variant="borderless" className="admin-edit-card admin-edit-surface" loading={loading}>
         {prompts.length > 0 ? (
           <Space direction="vertical" size={24} style={{ width: '100%' }}>
             {prompts.map((promptConfig) => {

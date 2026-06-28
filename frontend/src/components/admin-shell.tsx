@@ -66,7 +66,7 @@ export function AdminShell({ title, extra, children }: AdminShellProps) {
         <Header className="admin-header">
           <div className="admin-header-title">
             <AppstoreOutlined className="admin-header-icon" />
-            <Typography.Title level={4} style={{ margin: 0, color: '#f6fbff' }}>
+            <Typography.Title level={4} style={{ margin: 0, color: '#f6fbff', fontSize: 18 }}>
               {title}
             </Typography.Title>
           </div>

@@ -1176,11 +1176,11 @@ code {
 }
 
 .admin-image-slot-visual-square {
-  height: 168px;
+  aspect-ratio: 1 / 1;
 }
 
 .admin-image-slot-visual-portrait {
-  height: 216px;
+  aspect-ratio: 3 / 4;
 }
 
 .admin-image-slot-overlay {

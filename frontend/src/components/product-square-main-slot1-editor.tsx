@@ -848,7 +848,7 @@ export function ProductSquareMainSlot1Editor({
         </div>
       }
     >
-      <Space direction="vertical" size={16} style={{ width: "100%" }}>
+      <Space orientation="vertical" size={16} style={{ width: "100%" }}>
         {!backgroundUrl || !background ? (
           <div
             style={{
@@ -1119,7 +1119,7 @@ export function ProductSquareMainSlot1Editor({
           </Space>
         }
       >
-        <Space direction="vertical" size={12} style={{ width: "100%" }}>
+        <Space orientation="vertical" size={12} style={{ width: "100%" }}>
           <Typography.Text type="secondary">
             {sourcePickerMode === "sku"
               ? `已选择 ${sourcePickerSelectedIds.length} 张，支持选择 2-10 张。`

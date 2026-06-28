@@ -213,7 +213,7 @@ export function ProductSmartCropDialog({
                     }}
                     width={148}
                   />
-                  <Space direction="vertical" size={4} style={{ marginTop: 10 }}>
+                  <Space orientation="vertical" size={4} style={{ marginTop: 10 }}>
                     <Typography.Text strong>
                       {item.targetSlot !== undefined && item.targetSlot !== null
                         ? `位置 ${item.targetSlot + 1}`

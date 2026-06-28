@@ -104,7 +104,7 @@ export function ModelPromptPage() {
 
       <Card variant="borderless" className="admin-edit-card admin-edit-surface" loading={loading}>
         {prompts.length > 0 ? (
-          <Space direction="vertical" size={24} style={{ width: '100%' }}>
+          <Space orientation="vertical" size={24} style={{ width: '100%' }}>
             {prompts.map((promptConfig) => {
               const editor = editors.get(promptConfig.key);
               const currentValue = editor?.value ?? promptConfig.value;

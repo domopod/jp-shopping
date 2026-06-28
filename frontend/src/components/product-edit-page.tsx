@@ -1095,7 +1095,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
               </Space>
             }
           >
-            <Space direction="vertical" size={20} style={{ width: "100%" }}>
+            <Space orientation="vertical" size={20} style={{ width: "100%" }}>
               <div className="admin-image-manager-panel">
                 <div className="admin-image-manager-panel-header">
                   <div>
@@ -1154,7 +1154,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                                 : `位置 ${slot.slotIndex + 1}`}
                           </Typography.Text>
                           <Space
-                            direction="vertical"
+                            orientation="vertical"
                             size={8}
                             style={{ width: "100%" }}
                           >
@@ -1193,7 +1193,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         </div>
                       )}
                       <Space
-                        direction="vertical"
+                        orientation="vertical"
                         size={6}
                         style={{ width: "100%", marginTop: 12 }}
                       >
@@ -1291,7 +1291,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                                 : `位置 ${slot.slotIndex + 1}`}
                           </Typography.Text>
                           <Space
-                            direction="vertical"
+                            orientation="vertical"
                             size={8}
                             style={{ width: "100%" }}
                           >
@@ -1326,7 +1326,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         </div>
                       )}
                       <Space
-                        direction="vertical"
+                        orientation="vertical"
                         size={6}
                         style={{ width: "100%", marginTop: 12 }}
                       >
@@ -1403,7 +1403,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         }}
                       />
                       <Space
-                        direction="vertical"
+                        orientation="vertical"
                         size={8}
                         style={{ width: "100%", marginTop: 12 }}
                       >
@@ -1551,7 +1551,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                 destroyOnHidden
               >
                 <Space
-                  direction="vertical"
+                  orientation="vertical"
                   size={12}
                   style={{ width: "100%" }}
                 >
@@ -1781,7 +1781,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                           </div>
                         )}
                         <Space
-                          direction="vertical"
+                          orientation="vertical"
                           size={6}
                           style={{ width: "100%", marginTop: 10 }}
                         >
@@ -1859,7 +1859,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                           width={164}
                         />
                         <Space
-                          direction="vertical"
+                          orientation="vertical"
                           size={6}
                           style={{ width: "100%", marginTop: 10 }}
                         >
@@ -1904,7 +1904,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                     失败任务
                   </Typography.Title>
                   <Space
-                    direction="vertical"
+                    orientation="vertical"
                     size={12}
                     style={{ width: "100%", marginTop: 14 }}
                   >

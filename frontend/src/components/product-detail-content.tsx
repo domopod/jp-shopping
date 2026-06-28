@@ -77,7 +77,7 @@ export function ProductDetailContent({ product, loading = false }: ProductDetail
   }
 
   return (
-    <Space direction="vertical" size={16} style={{ width: '100%' }}>
+    <Space orientation="vertical" size={16} style={{ width: '100%' }}>
       <Card loading={loading} bordered={false}>
         <Descriptions title={product?.title || '商品详情'} bordered column={{ xs: 1, sm: 2, lg: 3 }}>
           <Descriptions.Item label="品牌">{product?.brand || '-'}</Descriptions.Item>
@@ -124,7 +124,7 @@ export function ProductDetailContent({ product, loading = false }: ProductDetail
               <Image.PreviewGroup>
                 <Space size={[12, 12]} wrap>
                   {product.images.map((image) => (
-                    <Space key={image.id} direction="vertical" size={8}>
+                    <Space key={image.id} orientation="vertical" size={8}>
                       <Image
                         alt={product.title}
                         height={100}

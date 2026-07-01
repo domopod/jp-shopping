@@ -939,23 +939,13 @@ code {
 .admin-edit-sku-group-card.ant-card {
   color: #e9f2ff;
   border: 1px solid rgba(86, 122, 196, 0.16);
-  background: linear-gradient(
-    180deg,
-    rgba(5, 18, 45, 0.84),
-    rgba(4, 16, 39, 0.96)
-  );
+  background: #071631;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .admin-edit-surface.ant-card {
   border-radius: 24px;
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(56, 189, 248, 0.08),
-      transparent 30%
-    ),
-    linear-gradient(180deg, rgba(5, 18, 45, 0.88), rgba(4, 16, 39, 0.98));
+  background: #071631;
 }
 
 .admin-edit-section-card .ant-card-head,
@@ -1034,6 +1024,9 @@ code {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background: #071631;
+  border-radius: 24px;
+  padding: 24px;
 }
 
 /* 编辑页的容器样式，确保与首页保持一致的布局 */
@@ -1041,13 +1034,26 @@ code {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background: #071631;
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.admin-edit-page-bg {
+  min-height: calc(100vh - 100px);
+  background: #071631;
+  margin: -8px -20px -24px;
+  padding: 8px 20px 24px;
+}
+
+body.admin-edit-page-body,
+body.admin-edit-page-body .admin-layout {
+  background: #071631 !important;
 }
 
 .admin-edit-surface {
-  /* 保持背景效果但去掉 Card 的特殊样式 */
   border: none;
   box-shadow: none;
-  background: transparent;
   border-radius: 0;
 }
 
@@ -1118,7 +1124,7 @@ code {
   padding: 18px;
   border: 1px solid rgba(86, 122, 196, 0.14);
   border-radius: 18px;
-  background: rgba(7, 22, 49, 0.52);
+  background: rgba(7, 22, 49, 0.85);
 }
 
 .admin-image-manager-panel-header {

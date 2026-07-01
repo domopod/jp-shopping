@@ -573,6 +573,13 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
   }
 
   useEffect(() => {
+    document.body.classList.add("admin-edit-page-body");
+    return () => {
+      document.body.classList.remove("admin-edit-page-body");
+    };
+  }, []);
+
+  useEffect(() => {
     void loadDetail();
   }, [loadDetail]);
 
@@ -1051,10 +1058,11 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
     <AdminShell title="编辑商品">
       {contextHolder}
 
-      <div
-        className="admin-edit-card admin-edit-surface admin-edit-form"
-        style={{ display: loading ? "none" : "block" }}
-      >
+      <div className="admin-edit-page-bg">
+        <div
+          className="admin-edit-card admin-edit-surface admin-edit-form"
+          style={{ display: loading ? "none" : "block" }}
+        >
         <Form
           form={form}
           layout="vertical"
@@ -1957,6 +1965,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
             </div>
           </div>
         </Form>
+      </div>
       </div>
 
       <Modal

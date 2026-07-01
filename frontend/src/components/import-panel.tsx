@@ -156,34 +156,36 @@ export function ImportPanel() {
   }
 
   return (
-    <div className="admin-panel admin-import-panel">
+    <div className="admin-panel admin-import-panel admin-panel-transparent">
       <form className="space-y-5" onSubmit={handleSubmit}>
         <label className="admin-field-label" htmlFor="product-url">
           商品 URL
         </label>
         <div className="admin-import-row">
-          <input
-            id="product-url"
-            value={url}
-            onChange={(event) => setUrl(event.target.value)}
-            placeholder="https://example.com/product/123"
-            className="admin-input"
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="admin-primary-button"
-          >
-            {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-            {isSubmitting ? '提交中...' : '抓取商品'}
-          </button>
+          <div className="admin-import-input-wrapper">
+            <input
+              id="product-url"
+              value={url}
+              onChange={(event) => setUrl(event.target.value)}
+              placeholder="黏贴要抓取的商品链接"
+              className="admin-input"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="admin-primary-button"
+            >
+              {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
+              {isSubmitting ? '提交中...' : '抓取商品'}
+            </button>
+          </div>
         </div>
         {error ? <p className="admin-error-text">{error}</p> : null}
       </form>
 
       <div className="mt-8">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-white">抓取记录</h2>
+          <h2 className="admin-field-label" style={{ marginBottom: 0 }}>抓取记录</h2>
           <p className="text-xs text-gray-300">最多显示最近 30 条</p>
         </div>
 

@@ -242,16 +242,18 @@ export function StockMonitorPage() {
               onChange={(e) => setUrlInput(e.target.value)}
               onPressEnter={handleAdd}
               disabled={adding}
+              suffix={
+                <Button
+                  type="primary"
+                  icon={<PlusOutlined />}
+                  onClick={handleAdd}
+                  loading={adding}
+                  className="stock-add-btn"
+                >
+                  添加
+                </Button>
+              }
             />
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={handleAdd}
-              loading={adding}
-              className="stock-add-btn"
-            >
-              添加
-            </Button>
           </div>
           <div className="stock-refresh-section">
             {lastRefreshTime && (

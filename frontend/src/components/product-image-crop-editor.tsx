@@ -12,6 +12,7 @@ import {
 } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { manualCropImage } from "@/lib/api";
+import { normalizeImageUrl } from "@/lib/image";
 
 const TARGET_SIZE_MAP: Record<
   "square_main" | "portrait_main" | "long_main",
@@ -152,7 +153,7 @@ export function ProductImageCropEditor({
     img.onerror = () => {
       message.warning("图片加载失败");
     };
-    img.src = imageUrl;
+    img.src = normalizeImageUrl(imageUrl);
   }, [open, imageUrl, targetSize.width, targetSize.height]);
 
   useEffect(() => {
@@ -461,7 +462,7 @@ export function ProductImageCropEditor({
               }}
             >
               <img
-                src={image.sourceUrl}
+                src={normalizeImageUrl(image.sourceUrl)}
                 alt="crop"
                 data-role="image"
                 draggable={false}

@@ -3,6 +3,7 @@
 import { Card, Col, Descriptions, Empty, Image, Row, Space, Table, Tag, Typography } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { ProcessStatus, ProductDetail, ProductSku } from '@/lib/types';
+import { normalizeImageUrl } from '@/lib/image';
 
 const STATUS_COLORS = {
   草稿: 'default',
@@ -39,7 +40,7 @@ export function ProductDetailContent({ product, loading = false }: ProductDetail
             alt={record.color || record.skuCode}
             height={52}
             preview={{ mask: '预览' }}
-            src={value}
+            src={normalizeImageUrl(value)}
             style={{ borderRadius: 10, objectFit: 'cover' }}
             width={52}
           />
@@ -128,7 +129,7 @@ export function ProductDetailContent({ product, loading = false }: ProductDetail
                       <Image
                         alt={product.title}
                         height={100}
-                        src={image.imageUrl}
+                        src={normalizeImageUrl(image.imageUrl)}
                         style={{ borderRadius: 12, objectFit: 'cover' }}
                         width={100}
                       />

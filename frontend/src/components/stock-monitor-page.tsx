@@ -12,6 +12,7 @@ import {
   togglePinStockMonitorProduct,
 } from '@/lib/api';
 import type { StockMonitorProduct, StockMonitorSku } from '@/lib/types';
+import { normalizeImageUrl } from '@/lib/image';
 
 const LAST_REFRESH_KEY = 'stock-monitor-last-refresh';
 
@@ -45,7 +46,7 @@ function ProductStockCard({
       <div className="stock-card-main">
         <div className="stock-card-image">
           {product.imageUrl && !imgError ? (
-            <img src={product.imageUrl} alt={product.title} onError={() => setImgError(true)} />
+            <img src={normalizeImageUrl(product.imageUrl)} alt={product.title} onError={() => setImgError(true)} />
           ) : (
             <div className="stock-card-img-placeholder">无图</div>
           )}

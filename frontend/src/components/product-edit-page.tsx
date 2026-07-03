@@ -58,6 +58,7 @@ import type {
   ImageCenterTask,
   ProductImageCenter,
 } from "@/lib/types";
+import { normalizeImageUrl } from "@/lib/image";
 
 interface ProductEditFormValues {
   title?: string;
@@ -1143,7 +1144,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         <div className="admin-image-slot-visual admin-image-slot-visual-square">
                           <Image
                             alt={`1:1主图 ${slot.slotIndex + 1}`}
-                            src={slot.asset.imageUrl}
+                            src={normalizeImageUrl(slot.asset.imageUrl)}
                             style={{
                               width: "100%",
                               height: "100%",
@@ -1280,7 +1281,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         <div className="admin-image-slot-visual admin-image-slot-visual-portrait">
                           <Image
                             alt={`3:4主图 ${slot.slotIndex + 1}`}
-                            src={slot.asset.imageUrl}
+                            src={normalizeImageUrl(slot.asset.imageUrl)}
                             style={{
                               width: "100%",
                               height: "100%",
@@ -1402,7 +1403,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                     <div className="admin-image-single-card">
                       <Image
                         alt="宝贝长图"
-                        src={imageCenter.categories.long_main[0].imageUrl}
+                        src={normalizeImageUrl(imageCenter.categories.long_main[0].imageUrl)}
                         style={{
                           width: "100%",
                           height: 360,
@@ -1510,7 +1511,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                     <div className="admin-image-single-card admin-image-single-card-size">
                       <Image
                         alt="尺码图"
-                        src={imageCenter.categories.size_chart[0].imageUrl}
+                        src={normalizeImageUrl(imageCenter.categories.size_chart[0].imageUrl)}
                         style={{
                           width: "100%",
                           height: "auto",
@@ -1753,7 +1754,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                           <Image
                             alt={item.label}
                             height={148}
-                            src={item.imageUrl}
+                            src={normalizeImageUrl(item.imageUrl)}
                             style={{
                               width: "100%",
                               objectFit: "cover",
@@ -1858,7 +1859,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         <Image
                           alt={`详情图 ${index + 1}`}
                           height={164}
-                          src={asset.imageUrl}
+                          src={normalizeImageUrl(asset.imageUrl)}
                           style={{
                             width: "100%",
                             objectFit: "cover",
@@ -2389,7 +2390,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                             alt={`原始图 ${rawImage.id}`}
                             height={148}
                             preview={false}
-                            src={rawImage.imageUrl}
+                            src={normalizeImageUrl(rawImage.imageUrl)}
                             style={{
                               width: "100%",
                               objectFit: "cover",
@@ -2439,7 +2440,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                           alt={`原始图 ${rawImage.id}`}
                           height={148}
                           preview={false}
-                          src={rawImage.imageUrl}
+                          src={normalizeImageUrl(rawImage.imageUrl)}
                           style={{
                             width: "100%",
                             objectFit: "cover",

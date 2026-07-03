@@ -15,6 +15,7 @@ import {
 } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { smartCropImages } from "@/lib/api";
+import { normalizeImageUrl } from "@/lib/image";
 
 interface ProductSmartCropDialogProps {
   open: boolean;
@@ -205,7 +206,7 @@ export function ProductSmartCropDialog({
                     alt={`裁切目标 ${item.id}`}
                     height={148}
                     preview={false}
-                    src={item.imageUrl}
+                    src={normalizeImageUrl(item.imageUrl)}
                     style={{
                       width: "100%",
                       objectFit: "cover",

@@ -18,6 +18,7 @@ import {
   uploadImageCenterRawImage,
 } from "@/lib/api";
 import type { ImageCenterRawImage, ProductImageCenter } from "@/lib/types";
+import { normalizeImageUrl } from "@/lib/image";
 
 const OUTPUT_SIZE = 1440;
 const DISPLAY_SIZE = 480;
@@ -467,7 +468,7 @@ export function ProductSquareMainSlot1Editor({
     img.onerror = () => {
       message.warning("背景图片加载失败");
     };
-    img.src = backgroundUrl;
+    img.src = normalizeImageUrl(backgroundUrl);
   }, [backgroundUrl, imageCenter, bgLoadVersion]);
 
   const columns = useMemo(
@@ -914,7 +915,7 @@ export function ProductSquareMainSlot1Editor({
             }}
           >
             <img
-              src={background.sourceUrl}
+              src={normalizeImageUrl(background.sourceUrl)}
               alt="background"
               data-role="background"
               draggable={false}
@@ -988,7 +989,7 @@ export function ProductSquareMainSlot1Editor({
                   }}
                 >
                   <img
-                  src={sku.sourceUrl}
+                  src={normalizeImageUrl(sku.sourceUrl)}
                   alt={`sku-${index}`}
                   draggable={false}
                   style={{
@@ -1157,7 +1158,7 @@ export function ProductSquareMainSlot1Editor({
                         alt={isAiImage ? aiImage.displayName : `图片 ${rawImage.id}`}
                         height={148}
                         preview={false}
-                        src={rawImage.imageUrl}
+                        src={normalizeImageUrl(rawImage.imageUrl)}
                         style={{
                           width: "100%",
                           objectFit: "cover",

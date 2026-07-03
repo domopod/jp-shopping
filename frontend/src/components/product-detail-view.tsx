@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Boxes, ImageIcon, Link2, PackageSearch } from 'lucide-react';
 import type { ProductDetail } from '@/lib/types';
+import { normalizeImageUrl } from '@/lib/image';
 
 interface ProductDetailViewProps {
   product: ProductDetail;
@@ -51,7 +52,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {product.images.map((image) => (
             <div key={image.id} className="overflow-hidden rounded-[22px] border border-white/10 bg-white/5">
-              <img alt={product.title} className="h-64 w-full object-cover" src={image.imageUrl} />
+              <img alt={product.title} className="h-64 w-full object-cover" src={normalizeImageUrl(image.imageUrl)} />
             </div>
           ))}
         </div>
@@ -89,7 +90,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                         <img
                           alt={sku.color || sku.skuCode}
                           className="h-14 w-14 rounded-xl border border-white/10 object-cover"
-                          src={sku.imageUrl}
+                          src={normalizeImageUrl(sku.imageUrl)}
                         />
                       ) : (
                         '-'

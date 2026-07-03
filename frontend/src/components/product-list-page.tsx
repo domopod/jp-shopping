@@ -8,6 +8,7 @@ import { ProductDetailContent } from '@/components/product-detail-content';
 import { deleteProduct, deleteProducts, fetchProductDetail, fetchProducts, retryImageProcessing } from '@/lib/api';
 import type { ProductDetail, ProductImageListStatus, ProductListItem } from '@/lib/types';
 import { AdminShell } from '@/components/admin-shell';
+import { normalizeImageUrl } from '@/lib/image';
 
 interface ProductListPageProps {
   highlightedId?: number;
@@ -480,7 +481,7 @@ export function ProductListPage({ highlightedId = 0 }: ProductListPageProps) {
                       className="admin-product-image"
                       height={72}
                       preview={{ mask: '预览' }}
-                      src={record.imageUrl}
+                      src={normalizeImageUrl(record.imageUrl)}
                       width={72}
                     />
                   ) : (

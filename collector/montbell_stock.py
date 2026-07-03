@@ -147,11 +147,16 @@ def collect_montbell_stock(url):
             price_intax = japan_colorsize.get('price_intax') if japan_colorsize else None
             price = format_jpy(price_intax)
 
-            # 从 colorsize.stock_date 获取预计到货日期
-            restock_date = None
-            if stock_status == 'BACKORDER':
-                stock_date = japan_colorsize.get('stock_date') if japan_colorsize else None
-                restock_date = format_restock_date(stock_date)
+            raw_stock_date = japan_colorsize.get('stock_date') if japan_colorsize else None
+            stock_date = raw_stock_date if raw_stock_date else None
+            restock_date = format_restock_date(stock_date)
+
+            stock_status_code = japan_colorsize.get('stock_status_code') if japan_colorsize else None
+            stock_quantity = japan_colorsize.get('stock_quantity') if japan_colorsize else None
+            store_stock_quantity = japan_colorsize.get('store_stock_quantity') if japan_colorsize else None
+            transferable_stock_quantity = japan_colorsize.get('transferable_stock_quantity') if japan_colorsize else None
+            arrival_quantity = japan_colorsize.get('arrival_quantity') if japan_colorsize else None
+            update_at_as = japan_colorsize.get('update_at_as') if japan_colorsize else None
 
             sku_code = f'{product_code}-{color_code}-{size_name}'
 
@@ -161,7 +166,14 @@ def collect_montbell_stock(url):
                 'colorCode': color_code,
                 'size': size_name,
                 'stockStatus': stock_status,
+                'stockStatusCode': stock_status_code,
+                'stockQuantity': stock_quantity,
+                'storeStockQuantity': store_stock_quantity,
+                'transferableStockQuantity': transferable_stock_quantity,
+                'arrivalQuantity': arrival_quantity,
+                'stockDate': stock_date,
                 'restockDate': restock_date,
+                'updateAt': update_at_as,
                 'price': price,
             })
 

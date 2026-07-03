@@ -274,6 +274,12 @@ model StockMonitorSku {
   colorCode      String?   @map("color_code") @db.VarChar(64)
   size           String?   @db.VarChar(128)
   stockStatus    String    @map("stock_status") @db.VarChar(32)
+  stockStatusCode Int?     @map("stock_status_code") @db.UnsignedInt
+  stockQuantity  Int?      @map("stock_quantity") @db.UnsignedInt
+  storeStockQuantity Int?  @map("store_stock_quantity") @db.UnsignedInt
+  transferableStockQuantity Int? @map("transferable_stock_quantity") @db.UnsignedInt
+  arrivalQuantity Int?     @map("arrival_quantity") @db.UnsignedInt
+  stockDate      String?   @map("stock_date") @db.VarChar(32)
   restockDate    String?   @map("restock_date") @db.VarChar(64)
   price          String?   @db.VarChar(64)
   lastCheckedAt  DateTime? @map("last_checked_at") @db.DateTime(0)

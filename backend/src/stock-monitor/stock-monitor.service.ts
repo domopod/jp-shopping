@@ -38,6 +38,12 @@ export class StockMonitorService {
             colorCode: sku.colorCode,
             size: sku.size,
             stockStatus: sku.stockStatus,
+            stockStatusCode: sku.stockStatusCode,
+            stockQuantity: sku.stockQuantity,
+            storeStockQuantity: sku.storeStockQuantity,
+            transferableStockQuantity: sku.transferableStockQuantity,
+            arrivalQuantity: sku.arrivalQuantity,
+            stockDate: sku.stockDate,
             restockDate: sku.restockDate,
             price: sku.price,
             lastCheckedAt: new Date(),
@@ -143,6 +149,12 @@ export class StockMonitorService {
             colorCode: sku.colorCode,
             size: sku.size,
             stockStatus: sku.stockStatus,
+            stockStatusCode: sku.stockStatusCode,
+            stockQuantity: sku.stockQuantity,
+            storeStockQuantity: sku.storeStockQuantity,
+            transferableStockQuantity: sku.transferableStockQuantity,
+            arrivalQuantity: sku.arrivalQuantity,
+            stockDate: sku.stockDate,
             restockDate: sku.restockDate,
             price: sku.price,
             lastCheckedAt: new Date(),
@@ -158,6 +170,12 @@ export class StockMonitorService {
             colorCode: sku.colorCode,
             size: sku.size,
             stockStatus: sku.stockStatus,
+            stockStatusCode: sku.stockStatusCode,
+            stockQuantity: sku.stockQuantity,
+            storeStockQuantity: sku.storeStockQuantity,
+            transferableStockQuantity: sku.transferableStockQuantity,
+            arrivalQuantity: sku.arrivalQuantity,
+            stockDate: sku.stockDate,
             restockDate: sku.restockDate,
             price: sku.price,
             lastCheckedAt: new Date(),
@@ -240,6 +258,12 @@ export class StockMonitorService {
       colorCode: string | null;
       size: string | null;
       stockStatus: string;
+      stockStatusCode: number | null;
+      stockQuantity: number | null;
+      storeStockQuantity: number | null;
+      transferableStockQuantity: number | null;
+      arrivalQuantity: number | null;
+      stockDate: string | null;
       restockDate: string | null;
       price: string | null;
       lastCheckedAt: Date | null;
@@ -267,6 +291,12 @@ export class StockMonitorService {
         colorCode: sku.colorCode,
         size: sku.size,
         stockStatus: sku.stockStatus,
+        stockStatusCode: sku.stockStatusCode,
+        stockQuantity: sku.stockQuantity,
+        storeStockQuantity: sku.storeStockQuantity,
+        transferableStockQuantity: sku.transferableStockQuantity,
+        arrivalQuantity: sku.arrivalQuantity,
+        stockDate: sku.stockDate,
         restockDate: sku.restockDate,
         price: sku.price,
         lastCheckedAt: sku.lastCheckedAt?.toISOString() || null,

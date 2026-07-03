@@ -245,6 +245,12 @@ export interface StockMonitorSku {
   colorCode: string | null;
   size: string | null;
   stockStatus: StockStatus;
+  stockStatusCode: number | null;
+  stockQuantity: number | null;
+  storeStockQuantity: number | null;
+  transferableStockQuantity: number | null;
+  arrivalQuantity: number | null;
+  stockDate: string | null;
   restockDate: string | null;
   price: string | null;
   lastCheckedAt: string | null;

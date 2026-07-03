@@ -9,7 +9,14 @@ export interface MontbellStockSku {
   colorCode: string;
   size: string;
   stockStatus: 'IN_STOCK' | 'OUT_OF_STOCK' | 'BACKORDER';
+  stockStatusCode: number | null;
+  stockQuantity: number | null;
+  storeStockQuantity: number | null;
+  transferableStockQuantity: number | null;
+  arrivalQuantity: number | null;
+  stockDate: string | null;
   restockDate: string | null;
+  updateAt: string | null;
   price: string | null;
 }
 

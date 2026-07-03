@@ -2506,6 +2506,16 @@ body.admin-edit-page-body .admin-layout {
   text-align: center;
   cursor: default;
   color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.stock-size-suffix {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 .stock-size-tag.spec-status-in-stock {

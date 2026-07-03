@@ -1,7 +1,7 @@
 'use client';
 
 import { DeleteOutlined, PlusOutlined, PushpinOutlined, ReloadOutlined } from '@ant-design/icons';
-import { Button, Input, Tooltip, message } from 'antd';
+import { Button, Input, message } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { AdminShell } from '@/components/admin-shell';
 import {
@@ -26,6 +26,42 @@ function groupSkusByColor(skus: StockMonitorSku[]) {
     groups[colorKey].push(sku);
   }
   return groups;
+}
+
+function formatStockDateMmDd(stockDate: string | null): string | null {
+  if (!stockDate || stockDate.length !== 6) return null;
+  const month = stockDate.slice(2, 4);
+  const day = stockDate.slice(4, 6);
+  return `${month}/${day}`;
+}
+
+function buildSizeSuffix(sku: StockMonitorSku): string {
+  const code = sku.stockStatusCode;
+  const isInStock = sku.stockStatus === 'IN_STOCK' || code === 8 || code === 7 || code === 1;
+  if (isInStock) {
+    const x = (sku.stockQuantity || 0) + (sku.storeStockQuantity || 0);
+    const dateStr = formatStockDateMmDd(sku.stockDate);
+    const y = sku.arrivalQuantity || 0;
+    if (dateStr && y > 0) {
+      return `(现货${x} · ${dateStr}到货${y})`;
+    }
+    if (y > 0) {
+      return `(现货${x} · 到货${y})`;
+    }
+    return `(现货${x})`;
+  }
+  if (code === 5 || code === 6 || sku.stockStatus === 'BACKORDER') {
+    const dateStr = formatStockDateMmDd(sku.stockDate);
+    const y = sku.arrivalQuantity || 0;
+    if (dateStr && y > 0) {
+      return `(${dateStr}到货${y})`;
+    }
+    if (y > 0) {
+      return `(到货${y})`;
+    }
+    return '';
+  }
+  return '';
 }
 
 function ProductStockCard({
@@ -100,18 +136,12 @@ function ProductStockCard({
                       : sku.stockStatus === 'OUT_OF_STOCK'
                         ? 'spec-status-out-of-stock'
                         : 'spec-status-backorder';
-                  const tooltipText =
-                    sku.stockStatus === 'BACKORDER' && sku.restockDate
-                      ? `预计${sku.restockDate} 到货`
-                      : sku.stockStatus === 'IN_STOCK'
-                        ? '有货'
-                        : '无货';
+                  const suffix = buildSizeSuffix(sku);
                   return (
-                    <Tooltip key={sku.id} title={tooltipText}>
-                      <div className={`stock-size-tag ${statusClass}`}>
-                        {sku.size}
-                      </div>
-                    </Tooltip>
+                    <div key={sku.id} className={`stock-size-tag ${statusClass}`}>
+                      <span className="stock-size-text">{sku.size}</span>
+                      {suffix && <span className="stock-size-suffix">{suffix}</span>}
+                    </div>
                   );
                 })}
               </div>

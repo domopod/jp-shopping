@@ -812,7 +812,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
       const result = await downloadImageCenterCategory(Number(id), category);
       window.open(result.downloadUrl, "_blank", "noopener,noreferrer");
     } catch (error) {
-      messageApi.error(error instanceof Error ? error.message : "下载模块失败");
+      messageApi.error(error instanceof Error ? error.message : "下载图片失败");
     } finally {
       setImageCenterActionKey(null);
     }
@@ -1129,7 +1129,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                       loading={imageCenterActionKey === "download-square_main"}
                       onClick={() => void handleDownloadCategory("square_main")}
                     >
-                      下载模块
+                      下载图片
                     </Button>
                   </Space>
                 </div>
@@ -1266,7 +1266,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                         void handleDownloadCategory("portrait_main")
                       }
                     >
-                      下载模块
+                      下载图片
                     </Button>
                   </Space>
                 </div>
@@ -1502,7 +1502,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                           void handleDownloadCategory("size_chart")
                         }
                       >
-                        下载模块
+                        下载图片
                       </Button>
                     </Space>
                   </div>
@@ -1741,7 +1741,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                       loading={imageCenterActionKey === "download-sku"}
                       onClick={() => void handleDownloadCategory("sku")}
                     >
-                      下载模块
+                      下载图片
                     </Button>
                   </Space>
                 </div>
@@ -1847,7 +1847,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                       loading={imageCenterActionKey === "download-detail"}
                       onClick={() => void handleDownloadCategory("detail")}
                     >
-                      下载模块
+                      下载图片
                     </Button>
                   </Space>
                 </div>
@@ -1960,7 +1960,7 @@ export function ProductEditPage({ id }: ProductEditPageProps) {
                   loading={imageCenterActionKey === "download-all"}
                   onClick={() => void handleDownloadAllImages()}
                 >
-                  下载全部
+                  下载全部图片
                 </Button>
               </Space>
             </div>

@@ -2500,6 +2500,9 @@ body.admin-edit-page-body .admin-layout {
   border-radius: 20px !important;
   font-size: 13px !important;
   padding: 0 10px !important;
+  background: rgba(38, 89, 154, 0.7) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
 }
 
 .stock-card-specs {

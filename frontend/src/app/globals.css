@@ -2346,6 +2346,37 @@ body.admin-edit-page-body .admin-layout {
   box-shadow: 0 4px 12px rgba(5, 153, 79, 0.2) !important;
 }
 
+.stock-import-btn.ant-btn,
+.stock-export-btn.ant-btn {
+  height: 36px;
+  padding: 0 18px;
+  border: 1px solid transparent !important;
+  border-radius: 20px;
+  background: #05994f;
+  box-shadow: 0 4px 12px rgba(5, 153, 79, 0.2);
+  font-weight: 700;
+  color: #ffffff !important;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stock-import-btn.ant-btn:hover,
+.stock-import-btn.ant-btn:focus,
+.stock-import-btn.ant-btn:active,
+.stock-export-btn.ant-btn:hover,
+.stock-export-btn.ant-btn:focus,
+.stock-export-btn.ant-btn:active {
+  border-color: transparent !important;
+  color: #ffffff !important;
+  background: #05994f !important;
+  box-shadow: 0 4px 12px rgba(5, 153, 79, 0.2) !important;
+}
+
 .stock-monitor-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2519,15 +2550,15 @@ body.admin-edit-page-body .admin-layout {
 }
 
 .stock-size-tag.spec-status-in-stock {
-  background: #52c41a;
+  background: #2e7d32;
 }
 
 .stock-size-tag.spec-status-out-of-stock {
-  background: #ff4d4f;
+  background: #c62828;
 }
 
 .stock-size-tag.spec-status-backorder {
-  background: #faad14;
+  background: #e67e22;
 }
 
 @media (max-width: 1600px) {

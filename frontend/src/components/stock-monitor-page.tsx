@@ -1,6 +1,6 @@
 'use client';
 
-import { DeleteOutlined, PlusOutlined, PushpinOutlined, ReloadOutlined } from '@ant-design/icons';
+import { DeleteOutlined, DownloadOutlined, PlusOutlined, PushpinOutlined, ReloadOutlined, UploadOutlined } from '@ant-design/icons';
 import { Button, Input, message } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { AdminShell } from '@/components/admin-shell';
@@ -259,6 +259,61 @@ export function StockMonitorPage() {
     }
   };
 
+  const handleExportUrls = () => {
+    if (items.length === 0) {
+      messageApi.warning('暂无监控商品');
+      return;
+    }
+    const csvContent = ['URL'].concat(items.map((p) => p.sourceUrl)).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `stock-monitor-urls-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    messageApi.success(`已导出 ${items.length} 个商品 URL`);
+  };
+
+  const handleImportUrls = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.csv,.txt';
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const urls = text.split('\n').map((line) => line.trim()).filter((line) => line && line.startsWith('http'));
+        if (urls.length === 0) {
+          messageApi.warning('未找到有效的商品链接');
+          return;
+        }
+        let successCount = 0;
+        let failCount = 0;
+        for (const url of urls) {
+          try {
+            await addStockMonitorProduct(url);
+            successCount++;
+          } catch {
+            failCount++;
+          }
+        }
+        await loadProducts();
+        if (failCount === 0) {
+          messageApi.success(`导入成功，共添加 ${successCount} 个商品`);
+        } else {
+          messageApi.warning(`导入完成：成功 ${successCount} 个，失败 ${failCount} 个`);
+        }
+      } catch {
+        messageApi.error('导入失败，请检查文件格式');
+      }
+    };
+    input.click();
+  };
+
   return (
     <AdminShell title="库存看板">
       {contextHolder}
@@ -285,6 +340,22 @@ export function StockMonitorPage() {
                 </Button>
               }
             />
+            <Button
+              icon={<UploadOutlined />}
+              onClick={handleImportUrls}
+              className="stock-import-btn"
+              type="primary"
+            >
+              导入
+            </Button>
+            <Button
+              icon={<DownloadOutlined />}
+              onClick={handleExportUrls}
+              className="stock-export-btn"
+              type="primary"
+            >
+              导出
+            </Button>
           </div>
           <div className="stock-refresh-section">
             {lastRefreshTime && (

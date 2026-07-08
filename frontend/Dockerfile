@@ -3,6 +3,7 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend .
+RUN mkdir -p public
 RUN npm run build
 
 FROM node:24-bullseye-slim AS runner
